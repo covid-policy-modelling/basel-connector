@@ -61,6 +61,8 @@ lerna bootstrap
 lerna run build
 ```
 
+If `lerna bootstrap` fails with `sh: 1: tsc: not found`, you may need to run `npm i -g typescript` first.
+
 Because this is a Lerna project, most dependencies are hoisted to the top-level, root `node_modules` directory.
 
 ### Testing on the command line
@@ -72,7 +74,16 @@ lerna run test
 lerna run integration-test
 ```
 
+Both these test suites appear to fail at present.
+
 ### Testing a connector using Docker
+
+Before building, you need to generate a Github [Personal Access Token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
+The token must have the scope `read:packages` (at minimum).
+Make a note of the token, you will not be able to retrieve it later.
+
+Each session, you will need to run `docker login docker.pkg.github.com`.
+This will ask for a username and password - the username is your Github username, and the password is the Personal Access Token.
 
 To build the connector using Docker and run its tests:
 
@@ -96,6 +107,13 @@ docker-compose run run-model
 ```
 
 The input will be taken from `<connector>/test/test-job.json` and output will go to `<connector>/output/data.json`.
+
+#### modelingcovid-covidmodel (MC19)
+
+To run the Modeling Covid-19 connector, you will need a sign up for a [Wolfram account](https://wolfram.com/developer-license).
+The username and password should be placed in `packages/modelingcovid-covidmodel/.env` (there may also be more secure ways to pass the value).
+Unfortunately, even after this point, you will still get an error (`Import::jsonhintposandchar: An error occurred near character '!'`).
+This appears to be because the model code itself tries to download data from a location which no longer exists (https://api.covid19data.cloud).
 
 ### Upgrading a connector to use a newer version of the model
 
