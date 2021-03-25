@@ -63,7 +63,7 @@ export interface SeverityMetrics {
   cumMild: number[]
 
   /**
-   * Total number of influence-like illnesses since the beginning of the epidemic
+   * Total number of influenza-like illnesses since the beginning of the epidemic
    */
   cumILI: number[]
 
