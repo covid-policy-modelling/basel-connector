@@ -81,4 +81,9 @@ export interface SeverityMetrics {
    * Total number of patients recovered from critical cases since the beginning of the epidemic
    */
   cumCritRecov: number[]
+
+  /**
+   * R-number on this day
+   */
+  R?: number[]
 }

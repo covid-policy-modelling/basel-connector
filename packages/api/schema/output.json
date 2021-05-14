@@ -199,6 +199,13 @@
           },
           "type": "array"
         },
+        "R": {
+          "description": "R-number on this day",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
         "SARI": {
           "description": "Current number of Severe Acute Respiratory Illness cases on this day (assume represents hospital demand)",
           "items": {
