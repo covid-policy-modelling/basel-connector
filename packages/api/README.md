@@ -4,7 +4,7 @@ The api shared between the model-runner, the web front end, and the model connec
 
 ## Publishing
 
-To publish the `@covid-modeling/api` package:
+To publish the `@covid-policy-modelling/api` package:
 
 1. Update the version of the api package in its `package.json` file.
 1. Push this to origin, make sure it passes CI and makes its way to master.

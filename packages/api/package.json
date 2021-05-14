@@ -1,5 +1,5 @@
 {
-  "name": "@covid-modeling/api",
+  "name": "@covid-policy-modelling/api",
   "version": "0.10.0",
   "main": "dist/src/index",
   "types": "dist/src/index.d.ts",
@@ -19,14 +19,14 @@
     "gts": "^1.1.2",
     "ts-json-schema-generator": "^0.65.0"
   },
-  "homepage": "https://github.com/covid-modeling/model-runner#readme",
+  "homepage": "https://github.com/covid-policy-modelling/model-runner#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/covid-modeling/model-runner.git",
-    "directory": "packages/neherlab-covid-19-scenarios"
+    "url": "git+https://github.com/covid-policy-modelling/model-runner.git",
+    "directory": "packages/api"
   },
   "bugs": {
-    "url": "https://github.com/covid-modeling/model-runner/issues",
+    "url": "https://github.com/covid-policy-modelling/model-runner/issues",
     "email": "covid-modeling+opensource@github.com"
   }
 }
