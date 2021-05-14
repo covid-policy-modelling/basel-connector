@@ -24,6 +24,13 @@ if [[ $VERSION != api/v* ]]; then
   exit 1
 fi
 
+PACKAGE_VERSION=$(npm -s run env echo '$npm_package_version')
+if [[ $VERSION != api/v$PACKAGE_VERSION ]]; then
+  echo Invalid version specified. Does not match package.json
+  echo
+  exit 1
+fi
+
 echo Publishing release of @codid-modeling/api package to npm
 
 git tag -a -m $VERSION $VERSION
