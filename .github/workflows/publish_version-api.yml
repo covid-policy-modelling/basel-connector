@@ -19,7 +19,7 @@ jobs:
         always-auth: true
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-        scope: '@covid-modeling'
+        scope: '@covid-policy-modelling'
     - name: Install
       run: npm install
     - name: Publish
