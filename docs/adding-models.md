@@ -2,7 +2,7 @@
 
 To add a new model, please follow the instructions below. You may use the existing connectors in this repo as a starting point.
 
-1. Create a new directory/module in this repo for your [connector](architecture.md#connector).
+1. Create a new directory/module in this repo for your [connector](architecture.md#connectors).
 1. Create any connector code that is required to transform from the [common input format](/packages/api/src/model-input.ts) into the input that your model accepts, and to transform your model's output into the [common output format](/packages/api/src/model-output.ts).
     - This can be omitted if your model executable already accepts inputs and outputs following the above standard schemas.
     - Several existing connectors are written in TypeScript. These will give you an idea of how to write your own, but you do not need to use the same language.
