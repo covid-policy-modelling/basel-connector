@@ -65,6 +65,6 @@ Responsibilities:
 
 ## Connectors
 
-Connectors provide the glue code, needed for executing a specific model in this system. They need to do a transformation from our standard input format into the inputs that the model expects, either in configuration files on via the CLI. This code is also be responsible for the actual execution of the model itself. Finally, it must transform the output of the execution into the standard output format that we expect.
+Connectors provide the glue code, needed for executing a specific model in this system. They need to do a transformation from our standard input format into the inputs that the model expects, either in configuration files or via the CLI. This code is also be responsible for the actual execution of the model itself. Finally, it must transform the output of the execution into the standard output format that we expect.
 
 This code is managed independently of the model runner, either by the modeling team, or the open source community. It should wrap the published model artifact (Docker image or otherwise), and produce a Docker image matching a [very specific format](adding-models.md#docker-image), that can be executed directly.
