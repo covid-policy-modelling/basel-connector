@@ -26,7 +26,6 @@
     "directory": "packages/api"
   },
   "bugs": {
-    "url": "https://github.com/covid-policy-modelling/model-runner/issues",
-    "email": "covid-modeling+opensource@github.com"
+    "url": "https://github.com/covid-policy-modelling/model-runner/issues"
   }
 }

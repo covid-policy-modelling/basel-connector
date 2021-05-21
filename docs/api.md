@@ -8,7 +8,7 @@ The `RequestInput` object contains `callbackURL` and `id` fields which allow it 
 
 ### Calibration
 
-Some models such as `CovidSim` require you to provide some information about recorded cases in the region, in order to calibrate the model. Model-runner takes this information in the form of three fields: `calibrationDate`, `calibrationCaseCount`, and `calibrationDeathCount`. The website `covid-modeling.org` provides this information automatically, based on recorded case data downloaded daily from data sources like [covidtracking.com](https://covidtracking.com), and the John Hopkins [Center for Systems Science and Engineering](https://github.com/CSSEGISandData/COVID-19).
+Some models such as `CovidSim` require you to provide some information about recorded cases in the region, in order to calibrate the model. Model-runner takes this information in the form of three fields: `calibrationDate`, `calibrationCaseCount`, and `calibrationDeathCount`. The [web-ui](https://github.com/covid-policy-modelling/web-ui) provides this information automatically, based on recorded case data downloaded daily from various international data sources.
 
 ### Reproduction Number (R0)
 

@@ -6,7 +6,7 @@ The `model-runner` service takes a JSON object as input describing assumptions, 
 
 This project is currently in production and actively maintained. We are happy to accept [contributions](CONTRIBUTING.md) for new model connectors from the community.
 
-To learn more about this project's goals, please see [PROJECT-INTENT.md](https://github.com/covid-modeling/web-ui/blob/master/PROJECT-INTENT.md).
+To learn more about this project's goals, please see [PROJECT-INTENT.md](https://github.com/covid-policy-modelling/web-ui/blob/master/PROJECT-INTENT.md).
 
 ## Links
 
@@ -20,16 +20,16 @@ This project uses [Lerna](https://lerna.js.org/) for handling a node mono-repo. 
 
 ### TypeScript Packages
 
-- [`model-runner`](/packages/model-runner): holds the runner code. ![Model Runner-Build, Test & Publish Docker](https://github.com/covid-modeling/model-runner/workflows/Model%20Runner-Build,%20Test%20&%20Publish%20Docker/badge.svg)
+- [`model-runner`](/packages/model-runner): holds the runner code. ![Model Runner-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/Model%20Runner-Build,%20Test%20&%20Publish%20Docker/badge.svg)
 - [`api`](/packages/api): holds the shared API used by all connectors to specify inputs and outputs in a common schema.
 
 ### Connectors
 
 Each of these packages contains code for packaging and executing a specific model in this system using a Docker image. This includes code for executing the model, along with connector code to transform input and output between the model-runner's schema and the format expected by the model. See [the architecture document](/docs/architecture.md#connectors) for more information on the connector format.
 
-- [`mrc-ide-covidsim`](/packages/mrc-ide-covidsim) holds connector code for the CovidSim model from Imperial College. ![MRC-IDE CovidSim Connector-Build, Test & Publish Docker](https://github.com/covid-modeling/model-runner/workflows/MRC-IDE%20CovidSim%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
-- [`neherlab-covid19-scenarios`](/packages/neherlab-covid19-scenarios) holds the connector code for the Basel model from Neher Lab at Biozentrum Basel. ![Basel Connector-Build, Test & Publish Docker](https://github.com/covid-modeling/model-runner/workflows/Basel%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
-- [`modelingcovid-covidmodel`](/packages/modelingcovid-covidmodel) holds the connector code for the MC19 model developed by the Modeling Covid-19 team, with team members from Stripe, Harvard, and Stanford. ![MC19 Connector-Build, Test & Publish Docker](https://github.com/covid-modeling/model-runner/workflows/MC19%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
+- [`mrc-ide-covidsim`](/packages/mrc-ide-covidsim) holds connector code for the CovidSim model from Imperial College. ![MRC-IDE CovidSim Connector-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/MRC-IDE%20CovidSim%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
+- [`neherlab-covid19-scenarios`](/packages/neherlab-covid19-scenarios) holds the connector code for the Basel model from Neher Lab at Biozentrum Basel. ![Basel Connector-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/Basel%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
+- [`modelingcovid-covidmodel`](/packages/modelingcovid-covidmodel) holds the connector code for the MC19 model developed by the Modeling Covid-19 team, with team members from Stripe, Harvard, and Stanford. ![MC19 Connector-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/MC19%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
 - Other model connector subprojects may be added here in future.
 
 ## Dependencies
@@ -153,7 +153,7 @@ GitHub Actions will build, test, and publish a package whenever changes are comm
 
 To build and publish a numbered version of a package, create a Git tag of the form `package/vmajor.minor.patch`, for example `model-runner/v1.2.3`, and push it to the repository.
 
-### Publishing @covid-modeling/api package to npm
+### Publishing @covid-policy-modelling/api package to npm
 
 To publish a new version of the `api` package to npm:
 
@@ -168,9 +168,8 @@ To publish a new version of the `api` package to npm:
 
 ## Questions, comments, and where to find us
 
-- Found a bug? [Raise an issue!](https://github.com/covid-modeling/model-runner/issues)
-- Have a question? [Send an email!](mailto:covid-modeling+opensource@github.com)
-- Want to contribue? [Raise a pull request!](https://github.com/covid-modeling/model-runner/pulls)
+- Found a bug? [Raise an issue!](https://github.com/covid-policy-modelling/model-runner/issues)
+- Want to contribue? [Raise a pull request!](https://github.com/covid-policy-modelling/model-runner/pulls)
 
 ## Contributing
 

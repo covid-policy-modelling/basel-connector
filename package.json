@@ -38,10 +38,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/covid-modeling/model-runner.git"
+    "url": "git+https://github.com/covid-policy-modelling/model-runner.git"
   },
   "bugs": {
-    "url": "https://github.com/covid-modeling/model-runner/issues",
-    "email": "covid-modeling+opensource@github.com"
+    "url": "https://github.com/covid-policy-modelling/model-runner/issues"
   }
 }

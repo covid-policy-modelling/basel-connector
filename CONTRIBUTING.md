@@ -1,8 +1,8 @@
 ## Contributing
 
-[fork]: https://github.com/covid-modeling/model-runner/fork
-[pr]: https://github.com/covid-modeling/model-runner/compare
-[style]: https://github.com/google/gts 
+[fork]: https://github.com/covid-policy-modelling/model-runner/fork
+[pr]: https://github.com/covid-policy-modelling/model-runner/compare
+[style]: https://github.com/google/gts
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
 Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
