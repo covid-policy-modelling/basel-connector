@@ -1,4 +1,4 @@
-FROM node:buster-slim AS build
+FROM node:14-buster-slim AS build
 
 # Install lerna for project building
 RUN npm install -g lerna

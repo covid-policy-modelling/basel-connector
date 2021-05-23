@@ -3,7 +3,7 @@ ARG COVIDSIM_VER=master
 FROM docker.pkg.github.com/mrc-ide/covid-sim/covidsim:${COVIDSIM_VER} AS covidsim
 
 ####################################################################
-FROM node:buster-slim AS build
+FROM node:14-buster-slim AS build
 
 # Install lerna for project building
 RUN npm install -g lerna
