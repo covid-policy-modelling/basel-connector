@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import * as fs from 'fs'
 import * as path from 'path'
-import { RequestInput } from '@covid-modeling/api'
+import { RequestInput } from '@covid-policy-modelling/api'
 import { enforceRunnerInputSchema, enforceOutputSchema } from '../../src/schema'
 
 suite('schema tests', () => {
