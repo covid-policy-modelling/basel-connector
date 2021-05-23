@@ -20,7 +20,7 @@ function main() {
 
 /*
 curl -X POST \
-  https://api.github.com/repos/covid-modeling/prod-covid19-control-plane/dispatches \
+  https://api.github.com/repos/covid-policy-modelling/control-plane-dev/dispatches \
   -H 'accept: application/vnd.github.everest-preview+json' \
   -H 'authorization: token $TOKEN' \
   -d '{
@@ -41,13 +41,13 @@ function submitJob(creds, job) {
     hostname: 'api.github.com',
     port: 443,
     headers: {
-      'User-Agent': 'covid-modeling',
+      'User-Agent': 'covid-policy-modelling',
       Accept: 'application/vnd.github.everest-preview+json',
       Authorization: `token ${creds.token}`,
       'Content-Length': data.length,
     },
     method: 'POST',
-    path: '/repos/covid-modeling/dev-covid19-control-plane/dispatches',
+    path: '/repos/covid-policy-modelling/control-plane-dev/dispatches',
   }
 
   logger.info(data)
