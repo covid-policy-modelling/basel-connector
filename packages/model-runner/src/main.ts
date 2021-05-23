@@ -1,7 +1,7 @@
 import * as pino from 'pino'
 import * as path from 'path'
 import * as mkdirp from 'mkdirp'
-import { RunStatus, RequestInput } from '@covid-modeling/api'
+import { RunStatus, RequestInput } from '@covid-policy-modelling/api'
 import { BlobStorage } from './blobstore'
 import { notifyUI } from './notify-ui'
 import { logger } from './logger'

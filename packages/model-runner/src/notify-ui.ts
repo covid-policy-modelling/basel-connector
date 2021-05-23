@@ -1,5 +1,5 @@
 import * as https from 'https'
-import { RunOutput } from '@covid-modeling/api'
+import { RunOutput } from '@covid-policy-modelling/api'
 import { logger } from './logger'
 
 export async function notifyUI(
