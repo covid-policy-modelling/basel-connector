@@ -1,4 +1,4 @@
-import { input, output } from '@covid-modeling/api'
+import { input, output } from '@covid-policy-modelling/api'
 
 export interface RunnerModelInput {
   modelInput: input.ModelInput

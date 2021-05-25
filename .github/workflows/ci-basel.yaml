@@ -20,8 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Log into registry for Imperial images
-        run: echo "${{ secrets.SERVICE_USER_PAT }}" | docker login docker.pkg.github.com -u ${{ secrets.SERVICE_USER }} --password-stdin
+      - name: Login to GitHub Packages for base image
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ secrets.GPR_USER }}
+          password: ${{ secrets.GPR_PAT }}
 
       - name: Run tests
         run: docker-compose build test
@@ -41,18 +45,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Log into registry for Docker images
-        run: echo "${{ secrets.SERVICE_USER_PAT }}" | docker login docker.pkg.github.com -u ${{ secrets.SERVICE_USER }} --password-stdin
+      - name: Login to GitHub Packages for base image
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ secrets.GPR_USER }}
+          password: ${{ secrets.GPR_PAT }}
 
       - name: Build image
         run: docker-compose build release
 
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GPR_USER }}
+          password: ${{ secrets.GPR_PAT }}
 
       - name: Push image (Local)
         run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
           # Strip git ref prefix (refs/heads/ or refs/tags/) from version

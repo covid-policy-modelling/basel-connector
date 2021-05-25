@@ -1,6 +1,6 @@
 import * as path from 'path'
 import * as fs from 'fs'
-import { input, output } from '@covid-modeling/api'
+import { input, output } from '@covid-policy-modelling/api'
 
 import { logger } from './logger'
 import { DateTime } from 'luxon'
