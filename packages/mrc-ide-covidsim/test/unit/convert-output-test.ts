@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import { input } from '@covid-modeling/api'
+import { input } from '@covid-policy-modelling/api'
 import { convertOutput } from '../../src/convert-output'
 
 const parameters: input.ModelParameters = {

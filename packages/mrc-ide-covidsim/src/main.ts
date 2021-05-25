@@ -3,7 +3,7 @@ import * as path from 'path'
 import * as mkdirp from 'mkdirp'
 import { readFileSync, writeFileSync } from 'fs'
 import * as jsonSchema from 'jsen'
-import { input } from '@covid-modeling/api'
+import { input } from '@covid-policy-modelling/api'
 import { logger } from './logger'
 import {
   BIN_DIR,
@@ -17,7 +17,7 @@ import { ImperialModel } from './imperial'
 // Load the ModelInput JSON schema, which is generated based on the type declaration
 // as part of the build step.
 const enforceSchema = jsonSchema(
-  require('@covid-modeling/api/schema/input.json')
+  require('@covid-policy-modelling/api/schema/input.json')
 )
 
 const handleRejection: NodeJS.UnhandledRejectionListener = err => {

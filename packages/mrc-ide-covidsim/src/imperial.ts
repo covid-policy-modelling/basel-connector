@@ -1,7 +1,7 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import { spawn } from 'child_process'
-import { output, input } from '@covid-modeling/api'
+import { output, input } from '@covid-policy-modelling/api'
 import { convertOutput } from './convert-output'
 import * as params from './imperial-params'
 import * as paramsSerializer from './params-serialization'
