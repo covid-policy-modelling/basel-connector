@@ -1,5 +1,5 @@
 {
-  "name": "@covid-modeling/neherlab-covid-19-scenarios",
+  "name": "@covid-policy-modelling/neherlab-covid-19-scenarios",
   "version": "1.3.0",
   "main": "dist/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@covid-modeling/api": "^0.10.0",
+    "@covid-policy-modelling/api": "^0.10.1",
     "d3": "^5.15.0",
     "jsen": "^0.6.6",
     "luxon": "^1.23.0",
@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/covid-modeling/model-runner.git",
+    "url": "git+https://github.com/covid-policy-modelling/model-runner.git",
     "directory": "packages/neherlab-covid-19-scenarios"
   },
   "bugs": {
-    "url": "https://github.com/covid-modeling/model-runner/issues"
+    "url": "https://github.com/covid-policy-modelling/model-runner/issues"
   }
 }

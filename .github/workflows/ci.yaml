@@ -46,7 +46,6 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ secrets.GPR_USER }}
-          # Cannot use GITHUB_TOKEN to push to GHCR
           password: ${{ secrets.GPR_PAT }}
 
       - name: Push image (Local)
