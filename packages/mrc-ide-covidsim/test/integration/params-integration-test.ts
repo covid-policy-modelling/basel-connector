@@ -2,7 +2,7 @@ import * as temp from 'temp'
 import { assert } from 'chai'
 import { ImperialModel } from '../../src/imperial'
 import { MODEL_DATA_DIR } from '../../src/config'
-import { input } from '@covid-modeling/api'
+import { input } from '@covid-policy-modelling/api'
 import { parse } from '../../src/params-serialization'
 import * as fs from 'fs'
 
