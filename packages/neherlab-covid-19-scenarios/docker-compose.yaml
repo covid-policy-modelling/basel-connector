@@ -31,7 +31,7 @@ services:
       - ./log:/data/log:rw
 
   remote-image:
-    image: docker.pkg.github.com/${GITHUB_REPO:-covid-modeling/model-runner}/neherlab-covid-19-scenarios-connector:master
+    image: ghcr.io/${GITHUB_REPO:-covid-policy-modelling/model-runner}/neherlab-covid-19-scenarios-connector:main
     tty: true
     volumes:
       - ./test/test-job.json:/data/input/inputFile.json:ro

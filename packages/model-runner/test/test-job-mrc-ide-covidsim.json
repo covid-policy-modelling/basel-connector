@@ -4,7 +4,7 @@
   "models": [
     {
       "slug": "mrc-ide-covid-sim",
-      "imageURL": "docker.pkg.github.com/covid-modeling/model-runner/mrc-ide-covidsim-connector:master"
+      "imageURL": "ghcr.io/covid-policy-modelling/model-runner/mrc-ide-covidsim-connector:main"
     }
   ],
   "configuration": {

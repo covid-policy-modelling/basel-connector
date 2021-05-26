@@ -228,7 +228,7 @@
           "type": "array"
         },
         "cumILI": {
-          "description": "Total number of influence-like illnesses since the beginning of the epidemic",
+          "description": "Total number of influenza-like illnesses since the beginning of the epidemic",
           "items": {
             "type": "number"
           },
