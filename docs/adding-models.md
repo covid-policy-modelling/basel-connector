@@ -28,4 +28,4 @@ A file with all of the required input information will be mounted into the conta
 
 ### Output
 
-Your image is expected to create a file: `/data/output/data.json` when it runs on the input. This file should contain JSON that satisfies the generalized `ModelOutput` schema in [this file](/model-runner/src/api/index.ts).
+Your image is expected to create a file: `/data/output/data.json` when it runs on the input. This file should contain JSON that satisfies the generalized `ModelOutput` schema in [this file](/model-runner/packages/api/src/index.ts).
