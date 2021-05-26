@@ -24,7 +24,7 @@ To add a new model, please follow the instructions below. You may use the existi
 
 ### Input
 
-A file with all of the required input information will be mounted into the container as `/data/input/inputFile.json`. This file will contain JSON that satisfies the generalized `ModelInput` schema in [this file](/model-runner/src/api/index.ts).
+A file with all of the required input information will be mounted into the container as `/data/input/inputFile.json`. This file will contain JSON that satisfies the generalized `ModelInput` schema in [this file](../packages/api/src/index.ts).
 
 ### Output
 
