@@ -1,7 +1,7 @@
 import { assert } from 'chai'
 import * as params from '../../src/imperial-params'
 import * as paramsSerialization from '../../src/params-serialization'
-import { input } from '@covid-modeling/api'
+import { input } from '@covid-policy-modelling/api'
 
 suite('the imperial model parameter format', () => {
   test('handles intervention strategies', () => {

@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { output, input } from '@covid-modeling/api'
+import { output, input } from '@covid-policy-modelling/api'
 
 export function convertOutput(
   modelInput: input.ModelInput,

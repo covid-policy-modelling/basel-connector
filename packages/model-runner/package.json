@@ -1,5 +1,5 @@
 {
-  "name": "@covid-modeling/model-runner",
+  "name": "@covid-policy-modelling/model-runner",
   "version": "1.2.0",
   "main": "dist/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "@azure/identity": "^1.1.0-preview.3",
     "@azure/storage-blob": "^12.1.1",
-    "@covid-modeling/api": "^0.10.0",
+    "@covid-policy-modelling/api": "^0.10.1",
     "archiver": "^4.0.1",
     "d3": "^5.15.0",
     "dockerode": "^3.2.0",
@@ -33,11 +33,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/covid-modeling/model-runner.git",
+    "url": "git+https://github.com/covid-policy-modelling/model-runner.git",
     "directory": "packages/model-runner"
   },
   "bugs": {
-    "url": "https://github.com/covid-modeling/model-runner/issues"
+    "url": "https://github.com/covid-policy-modelling/model-runner/issues"
   },
   "devDependencies": {
     "@types/unzipper": "^0.10.3"

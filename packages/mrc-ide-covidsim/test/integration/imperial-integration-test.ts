@@ -4,7 +4,7 @@ import * as temp from 'temp'
 import { assert } from 'chai'
 import { ImperialModel } from '../../src/imperial'
 import { BIN_DIR, MODEL_DATA_DIR } from '../../src/config'
-import { input } from '@covid-modeling/api'
+import { input } from '@covid-policy-modelling/api'
 import { parse } from '../../src/params-serialization'
 
 suite('imperial integration', () => {
@@ -358,7 +358,7 @@ suite('imperial integration', () => {
         [1, 1, 1, 1],
       ]
     )
-  }).timeout(80000)
+  }).timeout(120000)
 
   test('run imperial model for Luxembourg', async () => {
     const logDir = temp.mkdirSync()
