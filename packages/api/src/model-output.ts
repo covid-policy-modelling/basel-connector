@@ -2,6 +2,21 @@ import { ModelInput } from './model-input'
 
 export interface ModelOutput {
   metadata: ModelInput
+  model: {
+    /**
+     * A short display name to identify the model
+     */
+    name: string
+    /**
+     * A version number identifying the version of the model used in this run.
+     */
+    modelVersion: string
+    /**
+     * A version number identifying the version of the connector used in this run.
+     * This may be the same as modelVersion if development of the two is closely-linked.
+     */
+    connectorVersion: string
+  }
   time: {
     /**
      * An ISO-8601 string encoding the date that each timeseries begins.

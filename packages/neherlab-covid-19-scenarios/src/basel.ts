@@ -294,6 +294,11 @@ export class BaselConnector implements BaselModelConnector {
       metrics: severityMetrics,
     }
     const modelOutput: output.ModelOutput = {
+      model: {
+        name: 'Covid19-Scenarios (Neher)',
+        modelVersion: process.env.BASEL_VERSION,
+        connectorVersion: process.env.CONNECTOR_VERSION,
+      },
       metadata: runInput.modelInput,
       time: {
         t0: t0.toISODate(),

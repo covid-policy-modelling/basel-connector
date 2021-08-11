@@ -4,6 +4,8 @@ FROM docker.pkg.github.com/mrc-ide/covid-sim/covidsim:${COVIDSIM_VER} AS covidsi
 
 ####################################################################
 FROM node:14-buster-slim AS build
+# ARGs have to be redefined as they go out-of-scope with each FROM
+ARG COVIDSIM_VER=master
 
 # Install lerna for project building
 RUN npm install -g lerna
@@ -30,6 +32,8 @@ COPY packages/mrc-ide-covidsim ./packages/mrc-ide-covidsim/
 RUN lerna bootstrap
 RUN lerna run build
 
+# CovidSim has no way of actually retrieving the installed version number, so have to just repeat the image tag
+ENV COVIDSIM_VERSION=${COVIDSIM_VER}
 ENV MODEL_RUNNER_BIN_DIR /usr/bin
 ENV MODEL_RUNNER_LOG_DIR /data/log
 ENV MODEL_DATA_DIR /model/input

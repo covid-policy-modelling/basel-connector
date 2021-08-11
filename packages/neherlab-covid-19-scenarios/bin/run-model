@@ -1,7 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
 SCRIPTDIR=$(dirname "$0")
 
 mkdir -p log
+
+pushd $MODEL_REPO_ROOT
+export BASEL_VERSION=$(npx -c 'echo $npm_package_version')
+popd
+
+pushd $SCRIPTDIR
+export CONNECTOR_VERSION=$(npx -c 'echo $npm_package_version')
+popd
 
 node "$SCRIPTDIR"/../dist/src/main.js "$@" 2>&1 | tee log/runner.log | npx pino-pretty -t -i 'pid'

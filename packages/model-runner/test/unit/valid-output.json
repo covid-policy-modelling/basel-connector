@@ -1,4 +1,9 @@
 {
+  "model": {
+    "name": "Test model",
+    "modelVersion": "v1.0.0",
+    "connectorVersion": "v2.3.4"
+  },
   "metadata": {
     "region": "US",
     "subregion": "US-WY",

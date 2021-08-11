@@ -33,6 +33,11 @@ export function convertOutput(
 
   return {
     metadata: modelInput,
+    model: {
+      name: 'CovidSim (Imperial)',
+      modelVersion: process.env.COVIDSIM_VERSION,
+      connectorVersion: process.env.CONNECTOR_VERSION,
+    },
     time: {
       t0: '2020-01-01',
       timestamps,
