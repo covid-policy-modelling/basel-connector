@@ -29,7 +29,6 @@ Each of these packages contains code for packaging and executing a specific mode
 
 - [`mrc-ide-covidsim`](/packages/mrc-ide-covidsim) holds connector code for the CovidSim model from Imperial College. ![MRC-IDE CovidSim Connector-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/MRC-IDE%20CovidSim%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
 - [`neherlab-covid19-scenarios`](/packages/neherlab-covid19-scenarios) holds the connector code for the Basel model from Neher Lab at Biozentrum Basel. ![Basel Connector-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/Basel%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
-- [`modelingcovid-covidmodel`](/packages/modelingcovid-covidmodel) holds the connector code for the MC19 model developed by the Modeling Covid-19 team, with team members from Stripe, Harvard, and Stanford. ![MC19 Connector-Build, Test & Publish Docker](https://github.com/covid-policy-modelling/model-runner/workflows/MC19%20Connector-Build,%20Test%20&%20Publish%20Docker/badge.svg)
 - Other model connector subprojects may be added here in future.
 
 ## Dependencies
