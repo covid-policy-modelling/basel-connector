@@ -4,7 +4,7 @@
   "models": [
     {
       "slug": "idm-covasim",
-      "imageURL": "docker.pkg.github.com/covid-modeling/covasim-connector/covasim-connector:master"
+      "imageURL": "ghcr.io/covid-policy-modelling/covasim-connector/covasim-connector:main"
     }
   ],
   "configuration": {
