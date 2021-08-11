@@ -49,7 +49,7 @@
     },
     "ModelInput": {
       "additionalProperties": false,
-      "description": "A generalized description of the outputs of an epidemiological model.",
+      "description": "A generalized description of the input to an epidemiological model.",
       "properties": {
         "parameters": {
           "$ref": "#/definitions/ModelParameters"
