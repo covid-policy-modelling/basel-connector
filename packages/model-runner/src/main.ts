@@ -11,6 +11,7 @@ import {
   RUNNER_SHARED_SECRET,
   AZURE_STORAGE_ACCOUNT,
   AZURE_STORAGE_CONTAINER,
+  AZURE_STORAGE_KEY,
   INPUT_DIR,
   HOST_WORK_DIR,
 } from './config'
@@ -119,7 +120,8 @@ async function main() {
     // Upload results to blob storage.
     const storage = new BlobStorage(
       AZURE_STORAGE_ACCOUNT,
-      AZURE_STORAGE_CONTAINER
+      AZURE_STORAGE_CONTAINER,
+      AZURE_STORAGE_KEY
     )
 
     const outputFile = path.join(OUTPUT_DIR, 'data.json')

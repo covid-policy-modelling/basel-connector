@@ -1,4 +1,8 @@
-import { BlobServiceClient, ContainerClient } from '@azure/storage-blob'
+import {
+  BlobServiceClient,
+  ContainerClient,
+  StorageSharedKeyCredential,
+} from '@azure/storage-blob'
 import { DefaultAzureCredential } from '@azure/identity'
 import * as fs from 'fs'
 import * as fg from 'fast-glob'
@@ -8,17 +12,25 @@ import { logger } from './logger'
 export class BlobStorage {
   storageAccount: string
   containerName: string
+  storageKey?: string
   private client: ContainerClient
   private isAuth: boolean
 
-  constructor(storageAccount: string, containerName: string) {
+  constructor(
+    storageAccount: string,
+    containerName: string,
+    storageKey?: string
+  ) {
     this.storageAccount = storageAccount
     this.containerName = containerName
+    this.storageKey = storageKey
     this.client = this.getServiceClient().getContainerClient(this.containerName)
   }
 
   private getServiceClient(): BlobServiceClient {
-    const cred = new DefaultAzureCredential()
+    const cred = this.storageKey
+      ? new StorageSharedKeyCredential(this.storageAccount, this.storageKey)
+      : new DefaultAzureCredential()
     return new BlobServiceClient(
       `https://${this.storageAccount}.blob.core.windows.net`,
       cred

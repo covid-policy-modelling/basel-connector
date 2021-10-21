@@ -23,6 +23,9 @@ export const AZURE_STORAGE_ACCOUNT = process.env.AZURE_STORAGE_ACCOUNT
 // The storage container to upload results to
 export const AZURE_STORAGE_CONTAINER = process.env.AZURE_STORAGE_CONTAINER
 
+// The blob storage account key
+export const AZURE_STORAGE_KEY = process.env.AZURE_STORAGE_KEY
+
 // The Docker Registry user
 export const DOCKER_USER = process.env.DOCKER_USER
 
