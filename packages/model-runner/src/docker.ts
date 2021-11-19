@@ -69,10 +69,6 @@ export async function runContainer(
       [],
       logWriteStream,
       {
-        Env: [
-          `WOLFRAM_USER=${process.env.WOLFRAM_USER}`,
-          `WOLFRAM_PASSWORD=${process.env.WOLFRAM_PASSWORD}`,
-        ],
         HostConfig: {
           Binds: [
             `${HOST_WORK_DIR}/${path.basename(INPUT_DIR)}:/data/input:rw`,

@@ -26,8 +26,6 @@ services:
       - AZURE_STORAGE_CONTAINER
       - DOCKER_USER
       - DOCKER_PASSWORD
-      - WOLFRAM_USER
-      - WOLFRAM_PASSWORD
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./test/test-job-mrc-ide-covidsim.json:/data/input/inputFile.json:rw
@@ -44,8 +42,6 @@ services:
       - AZURE_STORAGE_CONTAINER
       - DOCKER_USER
       - DOCKER_PASSWORD
-      - WOLFRAM_USER
-      - WOLFRAM_PASSWORD
     tty: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
