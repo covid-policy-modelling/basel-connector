@@ -1,4 +1,3 @@
-import * as pino from 'pino'
 import * as path from 'path'
 import * as mkdirp from 'mkdirp'
 import { readFileSync, writeFileSync } from 'fs'
@@ -21,8 +20,7 @@ const enforceSchema = jsonSchema(
 )
 
 const handleRejection: NodeJS.UnhandledRejectionListener = err => {
-  const finalLogger = pino.final(logger)
-  finalLogger.error(err)
+  logger.error(err)
   process.exit(1)
 }
 

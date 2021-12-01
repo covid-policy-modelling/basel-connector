@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
 import * as https from 'https'
-import * as pino from 'pino'
+import { pino } from 'pino'
 
 const logger = pino()
 

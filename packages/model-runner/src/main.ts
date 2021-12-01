@@ -1,4 +1,3 @@
-import * as pino from 'pino'
 import * as path from 'path'
 import * as mkdirp from 'mkdirp'
 import { RunStatus, RequestInput } from '@covid-policy-modelling/api'
@@ -27,8 +26,7 @@ let callbackURL: string | null = null
 let modelSlug: string | null = null
 
 const handleRejection: NodeJS.UnhandledRejectionListener = err => {
-  const finalLogger = pino.final(logger)
-  finalLogger.error(err)
+  logger.error(err)
   if (callbackURL && inputID) {
     notifyUI(callbackURL, RUNNER_SHARED_SECRET, inputID, {
       modelSlug,
