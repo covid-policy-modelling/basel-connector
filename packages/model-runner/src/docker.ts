@@ -1,5 +1,7 @@
-import * as Dockerode from 'dockerode'
+import * as fs from 'fs'
 import * as path from 'path'
+import * as stream from 'stream'
+import * as Dockerode from 'dockerode'
 import {
   DOCKER_PASSWORD,
   DOCKER_USER,
@@ -8,7 +10,6 @@ import {
   LOG_DIR,
   OUTPUT_DIR,
 } from './config'
-import * as fs from 'fs'
 import { logger } from './logger'
 
 export async function imageHash(
@@ -32,18 +33,18 @@ export async function pullImage(
           password: DOCKER_PASSWORD,
         },
       },
-      (err, stream) => {
-        // TODO: Consider using dockerClient.modem.followProgress(stream, onFinished, onProgress)
+      (err, strm) => {
+        // TODO: Consider using dockerClient.modem.followProgress(strm, onFinished, onProgress)
         let message = ''
         if (err) return reject(err)
-        stream.on('data', data => {
+        strm.on('data', data => {
           message += data
         })
-        stream.on('end', () => {
+        strm.on('end', () => {
           logger.info('Docker pull complete')
           resolve(message)
         })
-        stream.on('error', streamErr => {
+        strm.on('error', streamErr => {
           logger.warn('Docker pull failed')
           logger.error(streamErr)
           reject(streamErr)
@@ -63,11 +64,14 @@ export async function runContainer(
     flags: 'w',
     encoding: 'utf-8',
   })
+  const combinedStream = new stream.PassThrough()
+  combinedStream.pipe(process.stdout)
+  combinedStream.pipe(logWriteStream)
   return new Promise((resolve, reject) => {
     client.run(
       image,
       [],
-      logWriteStream,
+      combinedStream,
       {
         HostConfig: {
           Binds: [
@@ -78,7 +82,7 @@ export async function runContainer(
       },
       {},
       (err, result) => {
-        // TODO: Consider using dockerClient.modem.followProgress(stream, onFinished, onProgress)
+        // TODO: Consider using dockerClient.modem.followProgress(strm, onFinished, onProgress)
         // or some equivalent for result
         if (err) return reject(err)
         logger.info(result)
