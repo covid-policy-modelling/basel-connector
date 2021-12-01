@@ -26,12 +26,14 @@ services:
       - AZURE_STORAGE_CONTAINER
       - DOCKER_USER
       - DOCKER_PASSWORD
+      - HOST_WORK_DIR=${PWD}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./test/test-job-mrc-ide-covidsim.json:/data/input/inputFile.json:rw
+      - ./input:/data/input:rw
       - ./output:/data/output:rw
       - ./log:/data/log:rw
-    command: /data/input/inputFile.json
+      - ./test:/data/test:rw
+    command: /data/test/test-job-mrc-ide-covidsim.json
 
   remote-image:
     image: ghcr.io/${GITHUB_REPO:-covid-policy-modelling/model-runner}/model-runner:main
@@ -45,7 +47,8 @@ services:
     tty: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./test/test-job-mrc-ide-covidsim.json:/data/input/inputFile.json:ro
+      - ./input:/data/input:rw
       - ./output:/data/output:rw
       - ./log:/data/log:rw
-    command: /data/input/inputFile.json
+      - ./test:/data/test:rw
+    command: /data/test/test-job-mrc-ide-covidsim.json
