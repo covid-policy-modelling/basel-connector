@@ -57,7 +57,7 @@ export async function pullImage(
 export async function runContainer(
   client: Dockerode,
   image: string
-): Promise<void> {
+): Promise<number> {
   // Setup the log file.
   const logFile = path.join(LOG_DIR, 'runner.log')
   const logWriteStream = fs.createWriteStream(logFile, {
@@ -93,7 +93,7 @@ export async function runContainer(
         if (result.Error) {
           reject(result.Error)
         } else {
-          resolve()
+          resolve(result.StatusCode)
         }
       }
     )

@@ -103,13 +103,13 @@ async function main() {
     logger.info(JSON.stringify(input.configuration))
 
     logger.info('Running container: %s', dockerImage)
-    await docker
-      .runContainer(dockerClient, dockerImage)
-      .then(data => {
-        // TODO: we seem to have lost the reference to the container
-        // logger.info('container %d removed', data)
-      })
-      .catch(err => logger.error(err))
+    await docker.runContainer(dockerClient, dockerImage).then(data => {
+      // TODO: we seem to have lost the reference to the container
+      // logger.info('container %d removed', data)
+      if (data !== 0) {
+        throw new Error('Unexpected status code from model')
+      }
+    })
 
     logger.info('Finished model run')
 
