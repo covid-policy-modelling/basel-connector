@@ -9,6 +9,12 @@ export async function notifyUI(
   payload: RunOutput
 ): Promise<void> {
   return new Promise((resolve, reject) => {
+    if (!url || !runId) {
+      logger.warn('No callback specified for: %o', payload)
+      resolve()
+      return
+    }
+
     const data = JSON.stringify(payload)
     const fullUrl = `${url}/api/simulations/${runId}`
 

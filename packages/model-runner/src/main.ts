@@ -27,18 +27,14 @@ let modelSlug: string | null = null
 
 const handleRejection: NodeJS.UnhandledRejectionListener = err => {
   logger.error(err)
-  if (callbackURL && inputID) {
-    notifyUI(callbackURL, RUNNER_SHARED_SECRET, inputID, {
-      modelSlug,
-      status: RunStatus.Failed,
-      resultsLocation: '',
-      exportLocation: '',
-    }).finally(() => {
-      process.exit(1)
-    })
-  } else {
+  notifyUI(callbackURL, RUNNER_SHARED_SECRET, inputID, {
+    modelSlug,
+    status: RunStatus.Failed,
+    resultsLocation: '',
+    exportLocation: '',
+  }).finally(() => {
     process.exit(1)
-  }
+  })
 }
 
 process.on('unhandledRejection', handleRejection)
@@ -62,15 +58,13 @@ async function main() {
     const dockerImage = model.imageURL
 
     // Notify the UI that the simulation is starting.
-    if (input.callbackURL) {
-      await notifyUI(input.callbackURL, RUNNER_SHARED_SECRET, input.id, {
-        modelSlug,
-        status: RunStatus.InProgress,
-        resultsLocation: '',
-        exportLocation: '',
-        workflowRunID: process.env.GITHUB_RUN_ID,
-      })
-    }
+    await notifyUI(input.callbackURL, RUNNER_SHARED_SECRET, input.id, {
+      modelSlug,
+      status: RunStatus.InProgress,
+      resultsLocation: '',
+      exportLocation: '',
+      workflowRunID: process.env.GITHUB_RUN_ID,
+    })
 
     const inputsDir = INPUT_DIR
     const outputsDir = OUTPUT_DIR
@@ -154,7 +148,6 @@ async function main() {
     // The UI only cares about the outputFile and outputHash, so
     // we let it know that the run was successful if both were uploaded
     if (
-      input.callbackURL &&
       results[0].status === 'fulfilled' &&
       results[2].status === 'fulfilled'
     ) {
