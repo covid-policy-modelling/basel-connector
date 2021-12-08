@@ -25,11 +25,26 @@ let inputID: string | number | null = null
 let callbackURL: string | null = null
 let modelSlug: string | null = null
 
+class StatusError extends Error {
+  status: RunStatus
+
+  constructor(message: string, status: RunStatus) {
+    super(message)
+    this.status = status
+  }
+}
+
 const handleRejection: NodeJS.UnhandledRejectionListener = err => {
-  logger.error(err)
+  let message = err
+  let status = RunStatus.Failed
+  if (err instanceof StatusError) {
+    message = err.message
+    status = err.status
+  }
+  logger.error(message)
   notifyUI(callbackURL, RUNNER_SHARED_SECRET, inputID, {
     modelSlug,
-    status: RunStatus.Failed,
+    status,
     resultsLocation: '',
     exportLocation: '',
   }).finally(() => {
@@ -95,11 +110,16 @@ async function main() {
     logger.info(JSON.stringify(input.configuration))
 
     logger.info('Running container: %s', dockerImage)
-    await docker.runContainer(dockerClient, dockerImage).then(data => {
+    await docker.runContainer(dockerClient, dockerImage).then(statusCode => {
       // TODO: we seem to have lost the reference to the container
       // logger.info('container %d removed', data)
-      if (data !== 0) {
-        throw new Error('Unexpected status code from model')
+      switch (statusCode) {
+        case 0:
+          break
+        case 10:
+          throw new StatusError('Unsupported model', RunStatus.Unsupported)
+        default:
+          throw new Error('Unexpected status code from model')
       }
     })
 

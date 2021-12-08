@@ -14,6 +14,7 @@ export enum RunStatus {
   Pending = 'pending',
   InProgress = 'in-progress',
   Complete = 'complete',
+  Unsupported = 'unsupported',
   Failed = 'failed',
 }
 
