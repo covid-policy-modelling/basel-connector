@@ -63,8 +63,8 @@ jobs:
           echo VERSION=$VERSION
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-          # Use Docker `latest` tag convention for master.
-          [ "$VERSION" == "master" ] && VERSION=latest
+          # Use Docker `latest` tag convention for main.
+          [ "$VERSION" == "main" ] && VERSION=latest
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           docker tag image $IMAGE_ID:$VERSION
