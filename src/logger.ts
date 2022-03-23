@@ -1,6 +1,6 @@
 import { pino } from 'pino'
 
 export const logger = pino({
-  name: 'model-runner',
+  name: 'basel-connector',
   level: 'info',
 })

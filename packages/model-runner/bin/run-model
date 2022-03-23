@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -o pipefail
-
-SCRIPTDIR=$(dirname "$0")
-
-mkdir -p log
-
-node "$SCRIPTDIR"/../dist/src/main.js "$@" 2>&1 | tee log/runner.log | npx pino-pretty -t -i 'pid'

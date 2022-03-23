@@ -1,42 +1,46 @@
-name: Model Runner-Build, Test & Publish Docker
-on:
-  push:
-    paths:
-      - 'packages/model-runner/**'
-      - 'packages/api/**'
+name: Build, Test & Publish Docker
+on: push
 
 env:
-  IMAGE_NAME: model-runner
+  IMAGE_NAME: basel-connector
 
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
-  test:
+  publish:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/model-runner
 
     steps:
+      - name: Set variables
+        id: variables
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+          # Strip git ref prefix (refs/heads/ or refs/tags/) from version
+          # but keep the rest of the ref. Replaces / with - to make the package name valid.
+          # Do not attempt to obtain the version number from vx.y.z tags:
+          # this is handled by the publish_version workflow.
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,refs/\(heads\|tags\)/\(.*\),\2,' | tr '/' '-')
+
+          # Always tag with git sha or version tag
+          echo IMAGE_ID=$IMAGE_ID
+          echo "::set-output name=image_id::$IMAGE_ID"
+          echo VERSION=$VERSION
+          echo "::set-output name=version::$VERSION"
+
       - uses: actions/checkout@v2
 
+      - name: Login to GitHub Packages for base image
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ secrets.GPR_USER }}
+          password: ${{ secrets.GPR_PAT }}
+
       - name: Run tests
-        run: docker-compose build test
-
-  publish:
-    needs: test
-    runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: packages/model-runner
-
-    strategy:
-      fail-fast: true
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+        run: docker-compose build run-model
 
       - name: Build image
         run: docker-compose build release
@@ -48,24 +52,24 @@ jobs:
           username: ${{ secrets.GPR_USER }}
           password: ${{ secrets.GPR_PAT }}
 
-      - name: Push image (Local)
+      - name: Push image
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
-          # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          # Strip git ref prefix (refs/heads/ or refs/tags/) from version
-          # but keep the rest of the ref. Replaces / with - to make the package name valid.
-          # Do not attempt to obtain the version number from vx.y.z tags:
-          # this is handled by the publish_version workflow.
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,refs/\(heads\|tags\)/\(.*\),\2,' | tr '/' '-')
-          # Always tag with git sha or version tag
+          IMAGE_ID=${{ steps.variables.outputs.image_id }}
+          VERSION=${{ steps.variables.outputs.version }}
+
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-          # Use Docker `latest` tag convention for main.
-          [ "$VERSION" == "main" ] && VERSION=latest
+
+      - name: Push image (latest)
+        if: ${{ github.ref_name == 'main' }}
+        run: |
+          IMAGE_ID=${{ steps.variables.outputs.image_id }}
+          VERSION=latest
+
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+

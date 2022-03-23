@@ -1,15 +1,24 @@
 {
-  "name": "model-runner-root",
-  "private": true,
+  "name": "@covid-policy-modelling/basel-connector",
+  "version": "1.5.0",
+  "main": "dist/index.js",
   "scripts": {
-    "watch": "tsc -p . --watch",
-    "compile": "tsc -p .",
-    "clean": "lerna clean && lerna run clean"
+    "test": "PATH=$PATH:../../node_modules/.bin && mocha --debug-brk --ui tdd -r ts-node/register test/unit/*-test.ts",
+    "integration-test": "PATH=$PATH:../../node_modules/.bin && mocha --debug-brk --ui tdd -r ts-node/register test/integration/*-test.ts",
+    "start": "node bin/run-model",
+    "build": "PATH=$PATH:../../node_modules/.bin && tsc -p .",
+    "watch": "PATH=$PATH:../../node_modules/.bin && tsc -p . --watch",
+    "check": "PATH=$PATH:../../node_modules/.bin && gts check",
+    "clean": "PATH=$PATH:../../node_modules/.bin && gts clean",
+    "compile": "PATH=$PATH:../../node_modules/.bin && tsc -p .",
+    "fix": "PATH=$PATH:../../node_modules/.bin && gts fix",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
   },
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/chai-as-promised": "^7.1.2",
-    "@types/dockerode": "^2.5.27",
     "@types/luxon": "^1.22.0",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.9.5",
@@ -17,29 +26,34 @@
     "chai-as-promised": "^7.1.1",
     "gts": "^1.1.2",
     "husky": "^4.2.5",
-    "lerna": "^3.22.1",
     "mocha": "^7.1.1",
     "pino-pretty": "^7.1.0",
     "prettier": "^1.19.1",
     "temp": "^0.9.1",
-    "ts-json-schema-generator": "^0.65.0",
     "ts-node": "^8.8.1",
     "typescript": "^3.9.2"
   },
-  "engines" : { "node" : ">=0.14" },
+  "engines": {
+    "node": ">=0.14"
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run fix"
+      "pre-commit": "npm run fix"
     }
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+  "dependencies": {
+    "@covid-policy-modelling/api": "^0.11.0",
+    "d3": "^5.15.0",
+    "jsen": "^0.6.6",
+    "luxon": "^1.23.0",
+    "mkdirp": "^1.0.3",
+    "pino": "^7.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/covid-policy-modelling/model-runner.git"
+    "url": "git+https://github.com/covid-policy-modelling/basel-connector.git"
   },
   "bugs": {
-    "url": "https://github.com/covid-policy-modelling/model-runner/issues"
+    "url": "https://github.com/covid-policy-modelling/basel-connector/issues"
   }
 }

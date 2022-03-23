@@ -3,9 +3,19 @@
   "compilerOptions": {
     "rootDir": ".",
     "strict": false,
-    "outDir": "dist",
-    "target": "ES2020"
+    "outDir": "dist"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "node_modules", "packages/*/dist"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "rootDir": "../"
+    }
+  }
 }

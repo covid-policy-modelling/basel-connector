@@ -1,4 +1,0 @@
-#!/bin/bash
-
-SCRIPTDIR=$(dirname "$0")
-node "$SCRIPTDIR"/../dist/src/submit-run.js "$@" | npx pino-pretty -t -i 'pid,hostname'

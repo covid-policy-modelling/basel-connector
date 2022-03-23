@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  release:
+    build:
+      context: .
+      target: release
+      args:
+        - BASEL_VERSION=${BASEL_VERSION:-1.6.4}
+    # This is set this way to make things easier in the Actions workflows.
+    image: image
+
+  run-model:
+    build:
+      context: .
+      target: test
+      args:
+        - BASEL_VERSION=${BASEL_VERSION:-1.6.4}
+    volumes:
+      - ./test-job.json:/data/input/inputFile.json:ro
+      - ./output:/data/output:rw
+      - ./log:/data/log:rw
+
+  validate:
+    image: 3scale/ajv
+    volumes:
+      - ./output-schema.json:/data/output-schema.json
+      - ./output:/data/output
+    command: validate -s output-schema.json -d output/data.json
