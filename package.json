@@ -42,7 +42,7 @@
     }
   },
   "dependencies": {
-    "@covid-policy-modelling/api": "^0.11.0",
+    "@covid-policy-modelling/api": "^0.13.0",
     "d3": "^5.15.0",
     "jsen": "^0.6.6",
     "luxon": "^1.23.0",
