@@ -1,6 +1,6 @@
 # Default version if the variable is not set. The version in the .env file takes precedence.
 ARG BASEL_VERSION=master
-FROM docker.pkg.github.com/covid-modeling/model-runner/basel:${BASEL_VERSION} AS build
+FROM ghcr.io/covid-modeling/model-runner/basel:${BASEL_VERSION} AS build
 
 # Copy the Basel model data.
 RUN mkdir -p /model/input \
@@ -29,6 +29,8 @@ ENTRYPOINT ["/connector/bin/run-model"]
 ####################################################################
 # Do this here so that we don't have to run the tests when bulding a release.
 FROM build AS release
+
+LABEL org.opencontainers.image.source=https://github.com/covid-policy-modelling/basel-connector
 
 ####################################################################
 FROM build AS test
